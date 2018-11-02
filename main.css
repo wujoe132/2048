@@ -1,0 +1,88 @@
+body {
+    margin: 80px 0;
+    padding: 0;
+    background: #faf8ef;
+    color: #776e65;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+}
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+/** Style for main title. */
+.main-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-title h1 {
+    font-size: 80px;
+    margin: 0;
+}
+
+/** Style of score container. */
+.score-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: #bbada0;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.score-container .score-text {
+    color:#eee4da;
+}
+
+.score-container #score {
+    color: white;
+}
+
+/** Styleb for above gane. */
+.above-game {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.above-game p {
+    display: inline-block;
+}
+
+.above-game button {
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 15px;
+    color: #f9f6f2;
+    height: 45px;
+    line-height: 42px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/** Style for Game Container */
+.game-container {
+    background: #bbada0;
+    border-radius: 6px;
+    width: 500px;
+    height: 500px;
+    margin-top: 40px;
+}
+
+
+/** Style for the tiles. */
+.tile {
+    width: 106.25px;
+    height: 106.25px;
+    float: left;
+    border-radius: 3px;
+    background: rgba(238, 228, 218, 0.35);
+    margin: 15px 0 0 15px;
+}
