@@ -1,7 +1,7 @@
 /** Predefined variable for the entire game. */
 let game;
 
-// TODO(joe): add documentation.
+//** 調用元素id的特性調用元素來取得值 */
 const scoreDOM = document.getElementById("score");
 const boardDOM = document.getElementById("board");
 const startDOM = document.getElementById("start");
@@ -51,8 +51,6 @@ class Game {
         /** Add 1 randome tile. */
         this.addRandomTile();
         this.addRandomTile();
-        /** TODO(joe): do css */
-
     }
 
 
@@ -67,7 +65,7 @@ class Game {
         /** 2. Get a random value zero tile. */
         const selectedZeroTile = valueZeroTiles[this.randomTileIndex(valueZeroTiles)];
 
-        // TODO(joe): add documentation.
+        //** 用於設置或返回selectedZeroTile裡的html and makes it equal to function randomTwoOrFour */
         selectedZeroTile.innerHTML = this.randomTwoOrFour();
     }
 
@@ -79,7 +77,7 @@ class Game {
 
     /** Return a random number 2 or 4. */
     randomTwoOrFour(){
-        // TODO(joe): you know it.
+        //** Create a if statement randomNumber to test either 4 or 2. */
         const randomNumber = Math.random();
         if (randomNumber > 0.5) {
             return 4;

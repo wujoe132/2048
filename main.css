@@ -86,3 +86,16 @@ body {
     background: rgba(238, 228, 218, 0.35);
     margin: 15px 0 0 15px;
 }
+
+#board {
+    color: white;
+    background: red;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 50px;
+    /* display: flex;
+    justify-content: space-around;
+    align-items: center; */
+} 
