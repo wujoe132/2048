@@ -85,17 +85,45 @@ body {
     border-radius: 3px;
     background: rgba(238, 228, 218, 0.35);
     margin: 15px 0 0 15px;
+    font-size: 18px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
-#board {
-    color: white;
-    background: red;
-    text-align: center;
-    line-height: 100px;
-    vertical-align: middle;
-    font-weight: bold;
-    font-size: 50px;
-    /* display: flex;
-    justify-content: space-around;
-    align-items: center; */
-} 
+.tile2 {
+    color: #776e65;
+    background:#eee4da;
+}
+
+.tile4 {
+    color: #776e65;
+    background: #ede0c8;
+}
+
+.tile8 {
+    color: #f9f6f2;
+    background: #f2b179;
+}
+
+.tile16 {
+    color: #f9f6f2;
+    background: #f59563;
+}
+
+.tile32 {
+    color: #f9f6f2;
+    background: #f67c5f;
+}
+
+.tile64 {
+    color: #f9f6f2;
+    background: #f65e3b;
+}
+
+.tile2048 {
+    color: #f9f6f2;
+    background-color: #edc22e;
+}
