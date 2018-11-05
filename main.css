@@ -35,7 +35,7 @@ body {
 }
 
 .score-container .score-text {
-    color:#eee4da;
+    color: #eee4da;
 }
 
 .score-container #score {
@@ -74,8 +74,25 @@ body {
     width: 500px;
     height: 500px;
     margin-top: 40px;
+    position: relative;
 }
 
+#win,
+#lose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(238, 228, 218, 0.73);
+    z-index: 100;
+    font-size: 70px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
 /** Style for the tiles. */
 .tile {
@@ -91,11 +108,12 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    transition: all .3s;
 }
 
 .tile2 {
     color: #776e65;
-    background:#eee4da;
+    background: #eee4da;
 }
 
 .tile4 {
@@ -121,6 +139,26 @@ body {
 .tile64 {
     color: #f9f6f2;
     background: #f65e3b;
+}
+
+.tile128 {
+    color: #f9f6f2;
+    background: #edcf72;
+}
+
+.tile256 {
+    color: #f9f6f2;
+    background: #edcf72;
+}
+
+.tile512 {
+    color: #f9f6f2;
+    background: #edcf72;
+}
+
+.tile1024 {
+    color: #f9f6f2;
+    background-color: #edc22e;
 }
 
 .tile2048 {
