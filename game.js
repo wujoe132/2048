@@ -2,11 +2,11 @@
 let game;
 
 //** 調用元素id的特性調用元素來取得值 */
-const scoreDOM = document.getElementById("score");
-const boardDOM = document.getElementById("board");
-const startDOM = document.getElementById("start");
-const winDom = document.getElementById("win");
-const loseDom = document.getElementById("lose");
+const scoreDOM = $("#score")[0];
+const boardDOM = $("#board")[0];
+const startDOM = $("#start")[0];
+const winDom = $("#win")[0];
+const loseDom = $("#lose")[0];
 
 /** Sets the game point score. */
 const WIN_SCORE = 2048;
@@ -19,25 +19,21 @@ class Game {
     /** 在class裡面跟constructor平行的只能是function. */
     /** 當你建的一個class第一個會跑到的function. */
     constructor() {
-        // console.log("Constructor!");
-        /** `this.` -> 整個class通用 */
-        this.tiles = new Array(16);
-
-        /** Calls init function to build the board. */
-        this.init();
-        this.playerScore = 0;
         this.gameWin = false;
         this.gameLose = false;
+        this.reStart();
     }
 
     /** Restarts the game. */
     reStart() {
-        /** TODO(joe): */
+        /** setting the default values of titles */
+        // TODO(joe) update syntax
         boardDOM.innerHTML = "";
-        /** TODO(joe): */
+        /** Creat new 16 empty titles */
         this.tiles = new Array(16);
         /** Clean up the player in the Game class as well as the dom. */
         this.playerScore = 0;
+        // TODO(joe) update syntax
         scoreDOM.innerHTML = 0;
 
         this.init();
@@ -46,8 +42,11 @@ class Game {
     /** Function to update the score dom on the interface. */
     updateScoreDom(addScore) {
         this.playerScore += Number(addScore);
+
+        // TODO(joe) update syntax
         scoreDOM.innerHTML = this.playerScore;
         if (this.checkWin(addScore)) {
+            // TODO(joe) update syntax
             winDom.style.display = "flex";
             this.gameWin = true;
         }
@@ -60,6 +59,7 @@ class Game {
         // console.log("Init!");
 
         /** Disable the win/lose layer. */
+        // TODO(joe) update syntax
         winDom.style.display = "none";
         loseDom.style.display = "none";
 
@@ -71,10 +71,12 @@ class Game {
         /** 1. Appends a new div dom on board. */
         for (let i = 0; i < this.tiles.length; i++) {
             /** This will create a DOM div => `<div></div>`. */
+            // TODO(joe) update syntax
             const tileDom = document.createElement("div");
 
             /** Seta class values in chlid, in this case, for example: <div class="tile tile0"></div>. */
             /** The first tile is for tile general style, the second is for specific type of tile style, for exmample: tile2, tile4, tile8 ... tile2048. */
+            // TODO(joe) update syntax
             tileDom.setAttribute("class", "tile tile0"); /**  `${i}` */
             tileDom.setAttribute("index", i);
             tileDom.setAttribute("value", 0);
@@ -101,15 +103,16 @@ class Game {
         const valueZeroTiles = this.tiles.filter(tile => tile.getAttribute("value") === "0");
 
         /** Only set random tile if there are any tiles has value equals to "0". */
-        if(valueZeroTiles.length > 0) {
+        if (valueZeroTiles.length > 0) {
             /** 2. Get a random value zero tile. */
             const selectedZeroTile = valueZeroTiles[this.randomTileIndex(valueZeroTiles)];
-    
+
             /** 用於設置或返回selectedZeroTile裡的html and makes it equal to function randomTwoOrFour */
             const randomValue = this.randomTwoOrFour()
+            // TODO(joe) update syntax
             selectedZeroTile.innerHTML = randomValue;
             selectedZeroTile.setAttribute("value", randomValue);
-    
+
             /** Updates the class name of the selected tile. For example, change `tile tile0` to `tile tile2` or `tile tile4`. */
             selectedZeroTile.setAttribute("class", "tile tile" + randomValue);
         }
@@ -153,7 +156,7 @@ class Game {
                 break;
         }
         this.addRandomTile();
-        if(this.checkLose()) {
+        if (this.checkLose()) {
             this.gameLose = true;
             loseDom.style.display = "flex";
         }
@@ -244,7 +247,9 @@ class Game {
     moveLeft() {
         for (let row = 0; row < 4; row++) {
             const existingNumbersOnRow = [];
-            /** 1. */
+            /** 1 檢查每一個row的exsisting number. */
+            /** 取每一條row上有意義的number */
+            /** 按着顺序来存放已有的number */
             for (let col = 0; col < 4; col++) {
                 const currentTileIndex = row * 4 + col;
                 const currentTile = this.tiles[currentTileIndex];
@@ -257,7 +262,9 @@ class Game {
             const newRow = this.leftMerge(existingNumbersOnRow)
             // console.log(`Move left new row: ${newRow}`);
 
-            /** 2. */
+            /** 2 將得到的有意義的number倒著填寫在每一個column上 */
+            /** 因為方向是右所以要倒著填寫 */
+            /** 以倒着的顺序来更新board. */
             for (let col = 0; col < 4; col++) {
                 const currentTileIndex = row * 4 + col;
                 const currentTile = this.tiles[currentTileIndex];
@@ -310,7 +317,9 @@ class Game {
     moveUp() {
         for (let col = 0; col < 4; col++) {
             const existingNumbersOnColumn = [];
-            /** 1, */
+            /** 1 檢查每一個column的exsisting number. */
+            /** 取每一條column上有意義的number */
+            /** 按着顺序来存放已有的number */
             for (let row = 0; row < 4; row++) {
                 const currentTileIndex = row * 4 + col;
                 const currentTile = this.tiles[currentTileIndex];
@@ -323,7 +332,9 @@ class Game {
             const newColumn = this.upMerge(existingNumbersOnColumn);
             // console.log(`Move up new column: ${newColumn}`);
 
-            /** 2. */
+            /** 2 將得到的有意義的number倒著填寫在每一個row上 */
+            /** 因為方向是右所以要倒著填寫 */
+            /** 以倒着的顺序来更新board.  */
             for (let row = 0; row < 4; row++) {
                 const currentTileIndex = row * 4 + col;
                 const currentTile = this.tiles[currentTileIndex];
@@ -377,7 +388,9 @@ class Game {
     moveDown() {
         for (let col = 0; col < 4; col++) {
             const existingNumbersOnColumn = [];
-            /** 1, */
+            /** 1 檢查每一個column的exsisting number. */
+            /** 取每一條column上有意義的number */
+            /** 按着顺序来存放已有的number */
             for (let row = 0; row < 4; row++) {
                 const currentTileIndex = row * 4 + col;
                 const currentTile = this.tiles[currentTileIndex];
@@ -390,7 +403,9 @@ class Game {
             const newColumn = this.downMerge(existingNumbersOnColumn)
             // console.log(`Move right new row: ${newColumn}`);
 
-            /** 2. */
+            /** 2 將得到的有意義的number倒著填寫在每一個row上 */
+            /** 因為方向是右所以要倒著填寫 */
+            /** 以倒着的顺序来更新board. */
             for (let row = 3; row >= 0; row--) {
                 const currentTileIndex = row * 4 + col;
                 const currentTile = this.tiles[currentTileIndex];
@@ -488,9 +503,9 @@ class Game {
      * Validates if there are no duplicate on each column.
      * Returns false if any number can be merged on column.
      */
-    validateNoDuplicateOnColumn () {
-        for(let col = 0; col < 4; col++) {
-            for (let row = 0; row < 3; row ++) {
+    validateNoDuplicateOnColumn() {
+        for (let col = 0; col < 4; col++) {
+            for (let row = 0; row < 3; row++) {
                 const currentTileIndex = row * 4 + col;
                 const tileAValue = this.tiles[currentTileIndex].getAttribute("value");
                 const tileBValue = this.tiles[currentTileIndex + 4].getAttribute("value");
